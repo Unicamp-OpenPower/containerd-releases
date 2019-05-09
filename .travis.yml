@@ -60,7 +60,7 @@ script:
   - mkdir containerd
   - cd containerd
   - wget https://github.com/containerd/containerd/archive/v$version.zip
-  - unzip containerd-$version
+  - unzip v$version.zip
   - mv containerd-$version containerd
   - cd containerd
   - make
