@@ -65,7 +65,7 @@ script:
   - cd containerd
   - make
   - cd bin
-  - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; cd/ppc64el/containerd; mkdir containerd-$version"
+  - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; cd /ppc64el/containerd; mkdir containerd-$version"
   - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$version/ctr ctr"
   - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$version/containerd containerd"
   - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$version/containerd-stress containerd-stress"
