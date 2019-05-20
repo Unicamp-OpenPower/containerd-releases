@@ -63,7 +63,7 @@ script:
   - unzip v$version.zip
   - mv containerd-$version containerd
   - cd containerd
-  - make
+  - make VERSION=version
   - cd bin
   - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; cd /ppc64el/containerd; mkdir containerd-$version"
   - lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$version ctr"
