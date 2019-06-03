@@ -31,6 +31,7 @@ addons:
   
   
 before_install:
+  - python3 ftp_version.py
   - sudo apt install -y lftp
   - wget -c https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-ppcle_64.zip
   - sudo unzip protoc-3.7.1-linux-ppcle_64.zip -d /usr/local
@@ -43,5 +44,4 @@ before_install:
 
 
 script:
-  - python3 ftp_version.py
   - bash build.sh
