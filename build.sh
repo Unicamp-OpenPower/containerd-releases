@@ -4,16 +4,6 @@ del_version=$(cat delete_version.txt)
 
 if [ $github_version != $ftp_version ]
 then
-  sudo apt install -y lftp
-  wget -c https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-ppcle_64.zip
-  sudo unzip protoc-3.7.1-linux-ppcle_64.zip -d /usr/local
-  sudo apt-get install -y btrfs-tools
-  cd $GOPATH/src/github.com/opencontainers  
-  git clone https://github.com/opencontainers/runc.git
-  cd runc
-  make
-  sudo make install
-  
   cd $GOPATH/src/github.com
   mkdir containerd
   cd containerd
