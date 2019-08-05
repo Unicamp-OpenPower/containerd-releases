@@ -11,7 +11,7 @@ then
   unzip v$github_version.zip
   mv containerd-$github_version containerd
   cd containerd
-  VERSION=$github_version make
+  sudo make
   cd bin
   
   if [[ $github_version > $ftp_version ]]
