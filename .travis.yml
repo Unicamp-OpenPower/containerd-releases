@@ -39,7 +39,7 @@ before_install:
   - git clone https://github.com/opencontainers/runc.git
   - cd runc
   - make
-  - sudo make install
+  - make install
 
 script:  
   - cd /home/travis/gopath/src/github.com/opencontainers
