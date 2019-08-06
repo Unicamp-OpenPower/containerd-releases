@@ -13,33 +13,40 @@ go:
 go_import_path: github.com/containerd/
 go_import_path: github.com/opencontainers/
 
-addons:
-  apt:
-    packages:
-      - btrfs-tools
-      - libnl-3-dev
-      - libnet-dev
-      - protobuf-c-compiler
-      # - protobuf-compiler
-      - python-minimal
-      - libcap-dev
-      - libaio-dev
-      - libprotobuf-c0-dev
-      - libprotobuf-dev
-      - socat
-      - libseccomp-dev
+#addons:
+#  apt:
+#    packages:
+#      - btrfs-tools
+#      - libnl-3-dev
+#      - libnet-dev
+#      - protobuf-c-compiler
+#      # - protobuf-compiler
+#      - python-minimal
+#      - libcap-dev
+#      - libaio-dev
+#      - libprotobuf-c0-dev
+#      - libprotobuf-dev
+#      - socat
+#      - libseccomp-dev
   
   
 before_install:
   - sudo apt install -y lftp
   - wget -c https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-ppcle_64.zip
   - sudo unzip protoc-3.7.1-linux-ppcle_64.zip -d /usr/local
-  - sudo apt-get install -y btrfs-tools
-  - cd $GOPATH/src/github.com/opencontainers
-  - git clone https://github.com/opencontainers/runc.git
-  - cd runc
-  - sudo make
-  - sudo make install
+  - sudo apt install -y btrfs-tools
+  - sudo apt install libseccomp-dev
+  
+ # - cd $GOPATH/src/github.com/opencontainers
+ # - git clone https://github.com/opencontainers/runc.git
+ # - cd runc
+ # - make
+ # - sudo make install
+ 
+  - go get github.com/opencontainers/runc
+  - cd $GOPATH/src/github.com/opencontainers/runc
+  - make
+  - make install
 
 script:  
   - cd /home/travis/gopath/src/github.com/opencontainers
