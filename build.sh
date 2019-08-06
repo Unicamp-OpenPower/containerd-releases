@@ -13,6 +13,7 @@ then
   cd containerd
   make
   sudo make install
+  sudo containerd -v
   cd /usr/local/bin
   ls
   
