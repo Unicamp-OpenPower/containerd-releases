@@ -7,10 +7,12 @@ then
   cd $GOPATH/src/github.com
   mkdir containerd
   cd containerd
-  wget https://github.com/containerd/containerd/archive/v$github_version.zip
-  unzip v$github_version.zip
-  mv containerd-$github_version containerd
+  git clone https://github.com/containerd/containerd.git
   cd containerd
+  git checkout release/1.2
+  #wget https://github.com/containerd/containerd/archive/v$github_version.zip
+  #unzip v$github_version.zip
+  #mv containerd-$github_version containerd
   make
   sudo make install
   sudo containerd -v
