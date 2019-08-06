@@ -9,7 +9,7 @@ then
   cd containerd
   git clone https://github.com/containerd/containerd.git
   cd containerd
-  git checkout release/1.2
+  git checkout v1.2.7
   #wget https://github.com/containerd/containerd/archive/v$github_version.zip
   #unzip v$github_version.zip
   #mv containerd-$github_version containerd
