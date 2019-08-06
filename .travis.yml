@@ -45,7 +45,7 @@ before_install:
   - go get github.com/opencontainers/runc
   - cd $GOPATH/src/github.com/opencontainers/runc
   - make
-  - make install
+  - sudo make install
 
 script:  
   - cd /home/travis/gopath/src/github.com/opencontainers
