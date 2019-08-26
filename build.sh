@@ -2,10 +2,7 @@ github_version=$ver #$(cat github_version.txt)
 ftp_version=$(cat ftp_version.txt)
 del_version=$(cat delete_version.txt)
 
-echo $github_version
-echo $ftp_version 
-
-if $github_version != $ftp_version 
+if [ $github_version != $ftp_version ] 
 then
   echo "Entrou"
   cd $GOPATH/src/github.com
