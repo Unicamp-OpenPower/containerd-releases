@@ -2,17 +2,14 @@ github_version=$(cat github_version.txt)
 ftp_version=$(cat ftp_version.txt)
 del_version=$(cat delete_version.txt)
 
-if [ 1 > 0 ] # $github_version != $ftp_version 
+if $github_version != $ftp_version 
 then
   cd $GOPATH/src/github.com
   mkdir containerd
   cd containerd
   git clone https://github.com/containerd/containerd.git
   cd containerd
-  git checkout v1.2.7
-  #wget https://github.com/containerd/containerd/archive/v$github_version.zip
-  #unzip v$github_version.zip
-  #mv containerd-$github_version containerd
+  git checkout v$github_version
   make
   sudo make install
   sudo containerd -v
@@ -38,5 +35,5 @@ then
   lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$github_version containerd-shim"
   lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$github_version containerd-shim-runc-v1"
   lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/containerd/containerd-$github_version containerd-shim-runc-v2"
-  lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; rm -rf /ppc64el/containerd/containerd-$del_version" 
+# lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; rm -rf /ppc64el/containerd/containerd-$del_version" 
 fi
