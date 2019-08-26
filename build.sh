@@ -4,7 +4,6 @@ del_version=$(cat delete_version.txt)
 
 if [ $github_version != $ftp_version ] 
 then
-  echo "Entrou"
   cd $GOPATH/src/github.com
   mkdir containerd
   cd containerd
