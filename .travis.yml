@@ -1,5 +1,6 @@
-os: linux-ppc64le
-dist: xenial
+os: linux
+arch: ppc64le
+dist: bionic
 sudo: required
 # setup travis so that we can run containers for integration tests
 services:
@@ -8,9 +9,8 @@ services:
 language: go
 
 go:
-  - "1.11.x"
+  - "1.13.x"
 
-go_import_path: github.com/containerd/
 go_import_path: github.com/opencontainers/
 
 addons:
@@ -34,18 +34,16 @@ before_install:
   - sudo apt install -y lftp
   - wget -c https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-ppcle_64.zip
   - sudo unzip protoc-3.7.1-linux-ppcle_64.zip -d /usr/local
-#  - sudo apt install -y btrfs-tools
-  
- # - cd $GOPATH/src/github.com/opencontainers
- # - git clone https://github.com/opencontainers/runc.git
- # - cd runc
- # - make
- # - sudo make install
- 
-  - go get github.com/opencontainers/runc
-  - cd $GOPATH/src/github.com/opencontainers/runc
+  - sudo apt install -y btrfs-tools
+  - cd $GOPATH/src/github.com/opencontainers
+  - git clone https://github.com/opencontainers/runc.git
+  - cd runc
   - make
   - sudo make install
+ # - go get github.com/opencontainers/runc
+ # - cd $GOPATH/src/github.com/opencontainers/runc
+ # - make
+ # - sudo make install
 
 script:  
   - cd /home/travis/gopath/src/github.com/opencontainers
