@@ -50,3 +50,10 @@ script:
   - cd /home/travis/gopath/src/github.com/opencontainers
   - python3 ftp_version.py
   - bash build.sh
+
+notifications:
+  slack:
+    rooms:
+      - secure: "p+7jsGyXFMkq1SxKV+3zJWkpHcBWKmxaiKfW7yoBN7H8T+XSLyzttOnqbGg97cRvnfUW5dg485h8hxcvVfu4d2H9A5cfJKyIs7GqdFPi9MzrZFvQXTz7qs58r/MO1l5ks0W0OKvzv+vEmU2B6e+eMwq27RNnNC8QoMYBVEPI+E46PI3sJhh4dC4LcxqlN1SkDGrFu6Buv5TioefDsJ78DeXVVhgeI8X7jP8uG/A46mq4O857xMwEkwJdlofbhC8CYdtqjjOMrpuTorDI8HInxaWJlHasZ6TJl9hEeIeUp4Cq/KkO3s7uE1tA14OFMoNsVzFH+nN+zV5Rt2w02ehFaP66C3HxgsEgHXO/s/l0aZt1Hjmcczu86hJziZCKgtMj7OEdt+hRaNsvJy8epyG9rS3+xcXFk8Z/kJXcM/ZdNeIlViaqTyJdGf5HTcw3ZI7q5ywYHyaPLwxidqsSVq+qiLGb8D4s/Kvs2HRMGXKjnd30I+l887rxcc5GGSPpDQmYGszuTDMMQ5O3LH3eSAykQeZJbIQ0wKKA+33fSvGsCVLd46cXdls7+fA2+muiFMZG9tN9ICRvpJVZDNpPe0gFtzsFJNQtTQeGeoS7tQsdi/YCoJmcRVpjIp+sAipZJo7DSHdep5IvgYCqTL4GXqD6FeHZJBpszx9B+rdTiwOcbkg="
+    on_success: change
+    on_failure: always
