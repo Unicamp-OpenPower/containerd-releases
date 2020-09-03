@@ -10,9 +10,12 @@ then
   cd containerd
   git clone https://github.com/containerd/containerd.git
   cd containerd
-  git checkout v$github_version
+  #git checkout v$github_version
+  echo "make"
   make
+  echo "make install"
   sudo make install
+  echo "make release"
   sudo make release
   cd releases
   ls
