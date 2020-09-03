@@ -10,14 +10,9 @@ services:
 language: go
 
 go:
-  - "1.13.x"
+  - "1.14.x"
 
-env:
-  - TRAVIS_GOOS=linux TEST_RUNTIME=io.containerd.runc.v1 TRAVIS_CGO_ENABLED=1 TRAVIS_DISTRO=bionic GOPROXY=direct
-  - TRAVIS_GOOS=linux TEST_RUNTIME=io.containerd.runc.v2 TRAVIS_CGO_ENABLED=1 TRAVIS_DISTRO=bionic TRAVIS_RELEASE=yes GOPROXY=direct
-  - TRAVIS_GOOS=linux TEST_RUNTIME=io.containerd.runc.v2 TRAVIS_CGO_ENABLED=1 TRAVIS_DISTRO=bionic GOPROXY=direct RUNC_FLAVOR=crun
-
-#go_import_path: github.com/opencontainers/
+go_import_path: github.com/opencontainers/runc
 go_import_path: github.com/containerd/containerd
 
 addons:
@@ -38,59 +33,62 @@ addons:
 
 
 before_install:
-  - git clone https://github.com/containerd/containerd.git
-  - cd containerd
-  - uname -r
-  #- sudo apt install -y lftp
+  #- git clone https://github.com/containerd/containerd.git
+  #- cd containerd
+  #- uname -r
+  #- sudo apt install btrfs-tools libnl-3-dev libnet-dev protobuf-c-compiler python-minimal libcap-dev libaio-dev libprotobuf-c0-dev libprotobuf-dev socat libseccomp-dev
+  #- export GOPATH=~/gopath
+  #- mkdir src bin pkg
+  - sudo apt install -y lftp
   #- wget -c https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-ppcle_64.zip
   #- sudo unzip protoc-3.7.1-linux-ppcle_64.zip -d /usr/local
-  #- sudo apt install -y btrfs-tools
-  #- cd $GOPATH/src/github.com/opencontainers
+  #- sudo apt install gcc make pkg-config unzip
+  - cd $GOPATH/src/github.com/opencontainers/runc
   #- git clone https://github.com/opencontainers/runc.git
   #- cd runc
-  #- make
-  #- sudo make install
+  - make
+  - sudo make install
  # - go get github.com/opencontainers/runc
  # - cd $GOPATH/src/github.com/opencontainers/runc
  # - make
  # - sudo make install
 
 install:
-  - sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-protobuf
-  - sudo chmod +x /usr/local/bin/protoc
-  - sudo chmod og+rx /usr/local/include/google /usr/local/include/google/protobuf /usr/local/include/google/protobuf/compiler
-  - sudo chmod -R og+r /usr/local/include/google/protobuf/
-  - protoc --version
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-seccomp ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-runc ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-cni ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-critools ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then wget https://github.com/checkpoint-restore/criu/archive/v3.13.tar.gz -O /tmp/criu.tar.gz ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then tar -C /tmp/ -zxf /tmp/criu.tar.gz ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then cd /tmp/criu-3.13 && sudo make install-criu ; fi
-  - cd $TRAVIS_BUILD_DIR
+  #- sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-protobuf
+  #- sudo chmod +x /usr/local/bin/protoc
+  #- sudo chmod og+rx /usr/local/include/google /usr/local/include/google/protobuf /usr/local/include/google/protobuf/compiler
+  #- sudo chmod -R og+r /usr/local/include/google/protobuf/
+  #- protoc --version
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-seccomp ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-runc ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-cni ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then sudo PATH=$PATH GOPATH=$GOPATH script/setup/install-critools ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then wget https://github.com/checkpoint-restore/criu/archive/v3.13.tar.gz -O /tmp/criu.tar.gz ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then tar -C /tmp/ -zxf /tmp/criu.tar.gz ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then cd /tmp/criu-3.13 && sudo make install-criu ; fi
+  #- cd $TRAVIS_BUILD_DIR
 
 script:
-  - export GOOS=$TRAVIS_GOOS
-  - export CGO_ENABLED=$TRAVIS_CGO_ENABLED
-  - GOOS=linux GO111MODULE=off script/setup/install-dev-tools
-  - go build -i .
-  - make build
-  - make binaries
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then sudo make install ; fi
-  - if [ "$TRAVIS_GOOS" = "linux" ]; then make coverage ; fi
-  - sudo make release
-  - echo "primeiro LS"
-  - pwd
-  - ls
-  - cd _output/
-  - echo "segundo LS"
-  - pwd
-  - ls
+  #- export GOOS=$TRAVIS_GOOS
+  #- export CGO_ENABLED=$TRAVIS_CGO_ENABLED
+  #- GOOS=linux GO111MODULE=off script/setup/install-dev-tools
+  #- go build -i . #Não executou...
+  #- make build #Analisar a partir daqui...
+  #- make binaries
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then sudo make install ; fi
+  #- if [ "$TRAVIS_GOOS" = "linux" ]; then make coverage ; fi
+  #- sudo make release
+  #- echo "primeiro LS"
+  #- pwd
+  #- ls
+  #- cd _output/
+  #- echo "segundo LS"
+  #- pwd
+  #- ls
   #- cd /home/travis/gopath/src/github.com/opencontainers
-  #- python3 ftp_version.py
-  #- python3 validation.py
-  #- bash build.sh
+  - python3 ftp_version.py
+  - python3 validation.py
+  - bash build.sh
 
 notifications:
   slack:
