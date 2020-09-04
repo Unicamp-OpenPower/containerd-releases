@@ -8,7 +8,8 @@ then
   export GOPATH=/var/lib/jenkins/workspace/containerd-build
   pwd
   go env | grep GOPATH
-  echo $GOPATH $GOROOT
+  echo $GOPATH
+  echo $GOROOT
   mkdir src bin pkg
   go get github.com/opencontainers/runc
   cd $GOPATH/src/github.com/opencontainers/runc
@@ -21,7 +22,8 @@ then
   cd containerd
   pwd
   go env | grep GOPATH
-  echo $GOPATH $GOROOT
+  echo $GOPATH
+  echo $GOROOT
   #git checkout v$github_version
   echo "make"
   make
@@ -30,7 +32,8 @@ then
   echo "make release"
   pwd
   go env | grep GOPATH
-  echo $GOPATH $GOROOT
+  echo $GOPATH
+  echo $GOROOT
   sudo make release
   cd releases
   ls
