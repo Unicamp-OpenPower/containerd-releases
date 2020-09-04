@@ -5,7 +5,7 @@ del_version=$(cat delete_version.txt)
 
 if [ $github_version != $ftp_version ]
 then
-  export GOPATH=/var/lib/jenkins/workspace/containerd-build
+  sudo export GOPATH=/var/lib/jenkins/workspace/containerd-build
   pwd
   go env | grep GOPATH
   echo $GOPATH
