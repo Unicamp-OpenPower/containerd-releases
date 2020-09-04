@@ -5,12 +5,12 @@ del_version=$(cat delete_version.txt)
 
 if [ $github_version != $ftp_version ]
 then
-  export GOPATH=/var/lib/jenkins/workspace/containerd-build
-  mkdir src bin pkg
-  go get github.com/opencontainers/runc
-  cd $GOPATH/src/github.com/opencontainers/runc
-  make
-  sudo make install
+  #export GOPATH=/var/lib/jenkins/workspace/containerd-build
+  #mkdir src bin pkg
+  #go get github.com/opencontainers/runc
+  #cd $GOPATH/src/github.com/opencontainers/runc
+  #make
+  #sudo make install
   cd $GOPATH/src/github.com
   mkdir containerd
   cd containerd
