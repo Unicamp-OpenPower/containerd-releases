@@ -7,6 +7,7 @@ if [ $github_version != $ftp_version ]
 then
   export GOPATH=/var/lib/jenkins/workspace/containerd-build
   go env | grep GOPATH
+  echo $GOPATH $GOROOT
   mkdir src bin pkg
   go get github.com/opencontainers/runc
   cd $GOPATH/src/github.com/opencontainers/runc
