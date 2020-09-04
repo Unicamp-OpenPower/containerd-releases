@@ -6,6 +6,7 @@ del_version=$(cat delete_version.txt)
 if [ $github_version != $ftp_version ]
 then
   export GOPATH=/var/lib/jenkins/workspace/containerd-build
+  go env | grep GOPATH
   mkdir src bin pkg
   go get github.com/opencontainers/runc
   cd $GOPATH/src/github.com/opencontainers/runc
