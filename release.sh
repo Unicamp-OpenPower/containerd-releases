@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #github_version=$(cat github_version.txt)
-#ftp_version=$(cat ftp_version.txt)
-ftp_version=0.0.1
-github_version=1.2.13
+ftp_version=$(cat ftp_version.txt)
+github_version=1.3.6
 LOCALPATH=$GOPATH/src/github.com/containerd/containerd/releases
 
 if [ $github_version != $ftp_version ]
