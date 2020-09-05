@@ -5,7 +5,7 @@ ftp_version=0.0.1
 github_version=1.2.13
 LOCALPATH=$GOPATH/src/github.com/containerd/containerd/releases
 
-if [ $github_version != $ftp_version ] && [ ${dist_version} == "18.04" ]
+if [ $github_version != $ftp_version ]
 then
   git clone https://$USERNAME:$TOKEN@github.com/Unicamp-OpenPower/repository-scrips.git
   cd repository-scrips/
