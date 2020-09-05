@@ -17,6 +17,6 @@ then
   sudo ./empacotar-deb.sh containerd containerd-$github_version.linux-ppc64le.tar.gz $github_version " "
   sudo ./empacotar-containerd-rpm.sh containerd-$github_version.linux-ppc64le.tar.gz $github_version
 
-  lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /repository/debian/ppc64el/conteinerd/ $LOCALPATH/conteinerd-$github_version-ppc64le.deb"
+  lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /repository/debian/ppc64el/conteinerd/ $LOCALPATH/containerd-$github_version-ppc64le.deb"
   sudo lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /repository/rpm/ppc64le/conteinerd/ ~/rpmbuild/RPMS/ppc64le/containerd-$github_version-1.ppc64le.rpm"
 fi
