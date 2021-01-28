@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 github_version=$(cat github_version.txt)
+github_version=1.4.2
 ftp_version=$(cat ftp_version.txt)
 LOCALPATH=$GOPATH/src/github.com/containerd/containerd/releases
 
