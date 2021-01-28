@@ -14,7 +14,7 @@ go:
 
 install:
   - sudo apt update
-  - sudo apt install btrfs-progs libnl-3-dev libnet-dev protobuf-c-compiler python libcap-dev libaio-dev libprotobuf-c-dev libprotobuf-dev socat libseccomp-dev
+  - sudo apt install libbtrfs-dev btrfs-progs libnl-3-dev libnet-dev protobuf-c-compiler python libcap-dev libaio-dev libprotobuf-c-dev libprotobuf-dev socat libseccomp-dev
   #- export GOPATH=~/gopath
   #- mkdir src bin pkg
   #- sudo apt update
