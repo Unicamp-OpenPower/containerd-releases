@@ -19,6 +19,7 @@ install:
   #- mkdir src bin pkg
   #- sudo apt update
   - sudo apt install lftp python3 rpm
+  - printf "set ssl:verify-certificate false" >> ~/.lftprc
   #- sudo apt install gcc make pkg-config unzip
   - go get github.com/opencontainers/runc
   - cd $GOPATH/src/github.com/opencontainers/runc
