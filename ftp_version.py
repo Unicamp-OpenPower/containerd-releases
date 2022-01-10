@@ -12,7 +12,7 @@ file.close()
 # find and save the current Bazel version on FTP server
 html = str(
     requests.get(
-        'https://oplab9.parqtec.unicamp.br/pub/ppc64el/containerd/latest'
+        'https://oplab9.parqtec.unicamp.br/pub/ppc64el/containerd'
     ).content)
 index = html.rfind('containerd-')
 ftp_version = html[index + 11:index + 17]
